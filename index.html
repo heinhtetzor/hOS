@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/index.js" defer></script>
+    <title>H-OS</title>
+</head>
+<body>
+    <div class="screen">
+        <div class="not_available">
+            <p>not available in smaller devices.</p>
+        </div>
+        <!-- initial loading screen starts -->
+        <div class="systemLoading">
+            <div class="init">
+                <h4 class="init_os_title">H<sup>OS</sup></h4>
+                <button class="boot_btn" onclick="onBootClick()">Boot OS</button>
+            </div>
+            <div class="loading_container visibility_hidden">
+                <i>Loading</i>
+                <div class="systemLoading_animation">
+                    <div class="systemLoading_dot"></div>
+                </div>
+            </div>
+        </div>
+        <!-- initial laoding screen ends -->
+       
+        <div class="taskbar">
+            <button class="taskbar_start_button" onclick="toggleStartMenu()">
+                Start
+            </button>
+            <div class="taskbar_middle_section">
+                 
+            </div>
+            <div class="taskbar_right_section">
+                <div onclick="goFullscreen()" class="taskbar_fullscreen_btn">
+                    <img src="/assets/icons/fullscreen.png" alt="fullscreen.png" width="30" height="20">
+                </div> 
+                <div class="battery_level_container">
+                    <div class="battery_level_paint"></div>
+                    <span class="battery_level_text"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="start_menu visibility_hidden">
+            <div class="start_menu_top_section">
+
+            </div>
+            <div class="start_menu_middle_section">
+
+            </div>
+            <div class="start_menu_bottom_section">
+                <button class="start_menu_shutdown_button" onclick="shutdownPopup()">Shutdown</button>
+            </div>
+        </div>
+
+         <!-- popoup starts -->
+         <!-- popup will always be last child -->
+         <div class="system_popup visibility_hidden">
+            <div class="system_popup_header">
+                <p class="system_popup_header_title">system message</p>
+                <span class="cancel_btn" onclick="onCancelBtnClick()">X</span>
+            </div>
+            <div class="system_popup_body">
+                
+            </div>
+            <div class="system_popup_footer">
+
+            </div>
+        </div>
+        <!-- popup ends -->
+    </div>
+</body>
+</html>

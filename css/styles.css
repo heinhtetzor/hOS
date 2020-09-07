@@ -1,0 +1,257 @@
+/* z-indexes
+    Notavailable - 101
+    SystemLoading - 100
+    startmenu - 98
+    systempopup - 99
+    screen - 1
+
+*/
+/* for start button */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+*, 
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* default font */
+    font-family: 'Courier New', Courier, monospace;
+}
+:root {
+    --DEFAULT_BG_COLOR: rgb(52, 124, 124);
+    --POPUP_HEIGHT: 200px;
+    --POPUP_WIDTH: 350px;
+    --SYSTEM_POPUP: '.screen_freeze > *:last-child';
+    --ACCENT_COLOR_1: #aaa2a2;
+}
+.not_available {
+    text-transform: uppercase;
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: rgb(171, 52, 201);
+    z-index: 101;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+.screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--DEFAULT_BG_COLOR);
+    background-size: cover;
+    position: relative;
+    transition: background-color 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+}
+.screen_freeze > *:not(:last-child) {
+    pointer-events: none;
+    opacity: 0.5;
+    filter: blur(4px);
+}
+
+.taskbar {
+    background-color: var(--ACCENT_COLOR_1);
+    filter: opacity(0.8);
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    /* transition: all 0.1s ease-in-out; */
+}
+.taskbar_start_button {
+    font-family: 'Orbitron', sans-serif;
+    height: 100%;
+    width: 100px;
+    font-size: 1.4rem;
+    background-color: #038c13;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.taskbar_middle_section {
+    flex-grow: 1;
+}
+.taskbar_right_section {
+    align-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.taskbar_fullscreen_btn {
+    border: 1px solid rgb(129, 127, 127);
+    border-radius: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+.battery_level_container {
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 60px;
+    position: relative;
+    text-align: center;
+}
+.battery_level_paint {
+    position: absolute;
+    /* width will be set by javascript, implied by battery percentage */
+    background-color: rgba(0, 200, 0, 0.5);
+    height: 100%;
+}
+.battery_level_text {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    font-size: 1.4rem;
+}
+.battery_is_charging {
+    padding-top: 9px;
+    background-image: url('/assets/icons/thunder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.start_menu {
+    filter: opacity(0.8);
+    font-family: 'Francois One', sans-serif;
+    height: 500px;
+    width: 500px;
+    bottom: 40px;
+    position: absolute;
+    background-color: rgba(247, 246, 242, 0.8);
+    border: 1px solid #000;
+    /* border-radius: 5px; */
+    z-index: 98;
+    transition: opacity 0.5s ease-in-out;
+}
+.start_menu_top_section {
+    width: 100%;
+    height: 10%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.start_menu_middle_section {
+    width: 100%;
+    height: 80%;
+}
+.start_menu_bottom_section {
+    width: 100%;
+    height: 10%;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row-reverse;
+}
+.start_menu_shutdown_button {
+    margin: 8px 6px;
+    font-size: 1.4rem;
+    background-color: rgb(230, 5, 5);
+    color: #fff;
+    cursor: pointer;
+    border: 4px solid rgb(71, 13, 13);
+    padding: 0px 9px;   
+}
+.systemLoading {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    visibility: visible;
+    transform: translateY(0%);
+    transition: transform 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.init_os_title {
+    font-size: 3rem;
+    text-align: center;
+}
+.boot_btn {
+    font-size: 2.4rem;
+    border: 1px dotted white;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+}
+.loading_container {
+    font-size: 2.4rem;
+    text-align: center;
+}
+.systemLoading_animation {
+    width: 400px;
+    height: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.systemLoading_dot {
+    width: 10px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #75c8ff;
+    animation: S_LOADING 0.3s infinite;
+}
+.visibility_hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+.system_popup {
+    z-index: 99;
+    width: var(--POPUP_WIDTH);
+    height: var(--POPUP_HEIGHT);
+    background-color: white;
+    border: 1px solid #786563;
+    /* border-radius: 8px; */
+    position: absolute;
+    top: 40%; 
+    left: 50%; 
+    transform: translate(calc((var(--POPUP_WIDTH) * -1) / 2), calc((var(--POPUP_HEIGHT) * -1) / 2));
+    padding: 9px; 
+}
+.system_popup_header {
+    height: 10%;
+    border-bottom: 1px solid rgba(90, 90, 90, 0.2);
+}
+.system_popup_header_title {
+    display: inline;
+    text-transform: uppercase;
+}
+.system_popup_body {
+    height: 60%;
+}
+.system_popup_footer {
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.cancel_btn {
+    float: right;
+    cursor: pointer;
+}
+.popup_btn {
+    padding: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+}
+.red_btn {
+    color: white;
+    background: red;
+}
+.orange_btn {
+    color: white;
+    background: orange;
+}
+@keyframes S_LOADING {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(390px);
+    }
+}
